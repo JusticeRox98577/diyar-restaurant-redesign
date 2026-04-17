@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu - Diyar Restaurant</title>
+    <meta name="description" content="Menu - Diyar Restaurant" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body data-page="menu">
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="container topbar__inner">
+          <a class="topbar__item" href="tel:+14256570767">+1 (425) 657-0767</a>
+          <a class="topbar__item" href="mailto:info@diyarrestaurant.com">info@diyarrestaurant.com</a>
+          <a class="topbar__item" href="https://www.instagram.com/diyarrestaurant.wa/" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </header>
+
+      <nav class="nav">
+        <div class="container nav__inner">
+          <a class="brand" href="../">
+            <img src="https://diyarrestaurant.com/wp-content/uploads/2025/12/Logo-Website-Version-1000x.png" alt="Diyar Restaurant logo" />
+          </a>
+          <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+            <span></span>
+            <span></span>
+          </button>
+          <div class="nav__menu" id="site-menu">
+            <a data-nav="menu" href="../menu/">Menu</a>
+            <a data-nav="about" href="../about-us/">About Us</a>
+            <a data-nav="events" href="../events/">Events</a>
+            <a data-nav="contact" href="../contact-us/">Contact Us</a>
+            <a class="button button--small" href="https://dub.sh/WaitlistEhsan" target="_blank" rel="noreferrer">Reserve a Table</a>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <section class="page-hero">
+          <div class="container page-hero__inner">
+            <p class="eyebrow">Menu</p>
+            <h1>Diyar Main Menu</h1>
+            <p>
+              Diyar Main Menu.
+            </p>
+          </div>
+        </section>
+
+        <section class="menu menu--page">
+          <div class="container menu__grid">
+            <div class="menu__content">
+              <p class="eyebrow">Order Online</p>
+              <h2>A Persian-Mediterranean restaurant in Sammamish serving signature kabobs, traditional stews, and authentic flavors.</h2>
+              <p>
+                The name DIYAR means “home” and “homeland,” where every guest feels a
+                sense of belonging. Made with 100% halal.
+              </p>
+              <div class="menu__actions">
+                <a class="button" href="https://dub.sh/ToastOrder" target="_blank" rel="noreferrer">Order Online</a>
+                <a class="button button--ghost" href="https://diyarrestaurant.com/diyar-menu/" target="_blank" rel="noreferrer">View Full Menu</a>
+              </div>
+            </div>
+
+            <a class="menu__preview" href="https://diyarrestaurant.com/diyar-menu/" target="_blank" rel="noreferrer" aria-label="Open Diyar menu">
+              <img src="https://diyarrestaurant.com/wp-content/uploads/2026/03/Main-Menu-V3.png" alt="Diyar Restaurant main menu" />
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container footer__inner">
+          <div>
+            <img class="footer__logo" src="https://diyarrestaurant.com/wp-content/uploads/2025/12/Logo-Website-Version-1000x.png" alt="Diyar Restaurant logo" />
+            <p>Savor the soul, feel at home.</p>
+          </div>
+          <div class="footer__links">
+            <a href="../menu/">Menu</a>
+            <a href="../about-us/">About Us</a>
+            <a href="../events/">Events</a>
+            <a href="../contact-us/">Contact Us</a>
+          </div>
+          <p class="footer__meta">A Persian-Mediterranean restaurant in Sammamish serving signature kabobs, traditional stews, and authentic flavors. The name DIYAR means “home” and “homeland,” where every guest feels a sense of belonging. Made with 100% halal. <span id="year"></span></p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
