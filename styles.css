@@ -251,14 +251,12 @@
 
 .word-wrap {
   display: inline-block;
-  overflow: hidden;
   vertical-align: bottom;
-  /* Give room for ascenders (top) and descenders (bottom)
-     without affecting the surrounding line rhythm */
-  padding-top: 0.12em;
-  padding-bottom: 0.18em;
-  margin-top: -0.12em;
-  margin-bottom: -0.18em;
+  /* clip-path:inset() replaces overflow:hidden — negative values extend
+     the visible region beyond the element edge so ascenders/descenders
+     are never clipped, while the word is still hidden when translateY(110%)
+     during the animation (it's 1×em below, well outside -0.3em) */
+  clip-path: inset(-0.15em 0 -0.3em 0);
 }
 
 .word-wrap .word {
