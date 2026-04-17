@@ -253,6 +253,12 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
+  /* Give room for ascenders (top) and descenders (bottom)
+     without affecting the surrounding line rhythm */
+  padding-top: 0.12em;
+  padding-bottom: 0.18em;
+  margin-top: -0.12em;
+  margin-bottom: -0.18em;
 }
 
 .word-wrap .word {
@@ -782,6 +788,7 @@ a {
 .contact__actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 14px;
   margin-top: 30px;
 }
@@ -1379,7 +1386,8 @@ section {
    ============================================================ */
 
 .location-beacon {
-  display: inline-flex;
+  display: flex;
+  align-self: flex-start;   /* don't stretch to card width */
   align-items: center;
   gap: 10px;
   margin-bottom: 14px;
