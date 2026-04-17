@@ -1295,6 +1295,265 @@ section {
 
 
 /* ============================================================
+   PAGE HERO — SUBPAGE ENHANCEMENTS
+   ============================================================ */
+
+/* Repositioned from above — make relative for particles & orbs */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Two animated ambient orbs behind the page-hero content */
+.page-hero::before,
+.page-hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-hero::before {
+  width: 560px;
+  height: 560px;
+  top: -40%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(200, 162, 106, 0.13), transparent 70%);
+  filter: blur(55px);
+  animation: pageOrbA 14s ease-in-out infinite;
+}
+
+.page-hero::after {
+  width: 420px;
+  height: 420px;
+  top: 10%;
+  right: -6%;
+  background: radial-gradient(circle, rgba(59, 104, 95, 0.18), transparent 70%);
+  filter: blur(55px);
+  animation: pageOrbB 18s 3s ease-in-out infinite;
+}
+
+@keyframes pageOrbA {
+  0%, 100% { transform: translate(0,    0) scale(1);    opacity: 0.55; }
+  40%       { transform: translate(4%,  3%) scale(1.1); opacity: 0.95; }
+  70%       { transform: translate(-3%, 5%) scale(0.93); opacity: 0.65; }
+}
+
+@keyframes pageOrbB {
+  0%, 100% { transform: translate(0,     0) scale(1);    opacity: 0.5; }
+  35%       { transform: translate(-4%, -3%) scale(1.08); opacity: 0.9; }
+  65%       { transform: translate(3%,  -4%) scale(0.96); opacity: 0.6; }
+}
+
+/* Ensure content sits above the orbs */
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Floating particles canvas (injected by JS) */
+.page-hero__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.page-hero__particles.is-active {
+  opacity: 0.45;
+}
+
+/* Word-split active class for page-hero h1 (same as hero h1) */
+.page-hero h1.word-split-active {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
+/* ============================================================
+   LOCATION BEACON  (Contact page)
+   ============================================================ */
+
+.location-beacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 7px 14px 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(200, 162, 106, 0.18);
+  background: rgba(200, 162, 106, 0.06);
+  width: fit-content;
+}
+
+.location-beacon__dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.location-beacon__dot::before,
+.location-beacon__dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  animation: beaconPing 2.2s ease-out infinite;
+}
+
+.location-beacon__dot::after {
+  animation-delay: 0.7s;
+  inset: -8px;
+  border-color: rgba(200, 162, 106, 0.5);
+}
+
+@keyframes beaconPing {
+  0%   { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+.location-beacon__text {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+
+
+/* ============================================================
+   EVENT CARDS — ATMOSPHERIC GLOW
+   ============================================================ */
+
+.events__grid .event-card:nth-child(1) { --glow-delay: 0s; }
+.events__grid .event-card:nth-child(2) { --glow-delay: 1.4s; }
+.events__grid .event-card:nth-child(3) { --glow-delay: 2.8s; }
+
+.events__grid .event-card {
+  animation: eventGlow 5.5s var(--glow-delay, 0s) ease-in-out infinite;
+}
+
+@keyframes eventGlow {
+  0%, 60%, 100% {
+    border-color: var(--line);
+    box-shadow: var(--shadow-card);
+  }
+  30% {
+    border-color: rgba(200, 162, 106, 0.3);
+    box-shadow: var(--shadow-card), 0 0 50px rgba(200, 162, 106, 0.14), inset 0 0 30px rgba(200, 162, 106, 0.04);
+  }
+}
+
+/* Candle flame icon injected by JS */
+.event-candle {
+  display: block;
+  width: 18px;
+  height: 26px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.event-candle__flame {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 16px;
+  background: radial-gradient(ellipse at 50% 80%, var(--gold) 0%, var(--gold-soft) 40%, rgba(255, 220, 150, 0.3) 70%, transparent 100%);
+  border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+  animation: flameDance 1.8s ease-in-out infinite alternate;
+  filter: blur(0.5px);
+}
+
+.event-candle__stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: linear-gradient(180deg, rgba(200, 162, 106, 0.4), rgba(200, 162, 106, 0.15));
+  border-radius: 1px;
+}
+
+@keyframes flameDance {
+  0%   { transform: translateX(-50%) scaleX(1)   scaleY(1)    rotate(-1deg); opacity: 0.9; }
+  33%  { transform: translateX(-48%) scaleX(0.88) scaleY(1.08) rotate(2deg);  opacity: 1; }
+  66%  { transform: translateX(-52%) scaleX(1.1)  scaleY(0.96) rotate(-2deg); opacity: 0.85; }
+  100% { transform: translateX(-50%) scaleX(0.95) scaleY(1.04) rotate(1deg);  opacity: 0.95; }
+}
+
+
+/* ============================================================
+   MENU PREVIEW — ANIMATED BORDER
+   ============================================================ */
+
+.menu--page .menu__preview {
+  position: relative;
+  background: var(--bg);    /* solid bg so rotating border shows at edge */
+  isolation: isolate;
+}
+
+/* Spinning conic-gradient border ring */
+.menu--page .menu__preview::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--radius-xl) + 8px);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(200, 162, 106, 0.55) 45deg,
+    rgba(234, 214, 176, 0.7) 90deg,
+    rgba(200, 162, 106, 0.55) 135deg,
+    transparent 180deg,
+    transparent 360deg
+  );
+  animation: menuBorderSpin 6s linear infinite;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+@keyframes menuBorderSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Pulse overlay on menu preview */
+.menu--page .menu__preview::after {
+  content: '';
+  position: absolute;
+  inset: 14px;                          /* matches the padding */
+  border-radius: var(--radius-xl);
+  background: rgba(200, 162, 106, 0);
+  transition: background 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.menu--page .menu__preview:hover::after {
+  background: rgba(200, 162, 106, 0.04);
+}
+
+
+/* ============================================================
+   ABOUT — STORY SECTION CONNECTOR LINE
+   ============================================================ */
+
+.story__connector {
+  display: none;   /* shown by JS when in wide layout */
+}
+
+
+/* ============================================================
    SCROLL REVEAL SYSTEM
    ============================================================ */
 
