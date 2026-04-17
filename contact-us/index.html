@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us - Diyar Restaurant</title>
     <meta name="description" content="Contact Us - Diyar Restaurant" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://diyarrestaurant.com data:; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -121,7 +123,11 @@
             <div class="contact-form__card">
               <p class="eyebrow">Contact Form</p>
               <h2>Send us a message.</h2>
-              <form class="form-grid">
+              <form class="form-grid" novalidate>
+                <!-- Honeypot: bots fill this; real users don't see it -->
+                <div class="form-honeypot" aria-hidden="true">
+                  <label>Leave this blank <input type="text" name="website" autocomplete="off" tabindex="-1" /></label>
+                </div>
                 <label>
                   <span>Name</span>
                   <input type="text" name="name" placeholder="Your name" />

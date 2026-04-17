@@ -1786,3 +1786,17 @@ section {
     gap: 14px;
   }
 }
+
+/* ============================================================
+   SECURITY — HONEYPOT (contact form spam trap)
+   ============================================================ */
+
+.form-honeypot {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  tab-index: -1;
+}
